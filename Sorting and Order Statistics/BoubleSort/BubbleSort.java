@@ -1,29 +1,27 @@
 import java.util.ArrayList;
 
-public class InsertionSort{
+public class BubbleSort{
 	
-	ArrayList<Integer> list;
+	private ArrayList<Integer> list;
 
-	public InsertionSort(){
-		list = new ArrayList<Integer>();
+	BubbleSort() {
+		list = new ArrayList<>();
 	}
 
-	public void insert(int i) {
+	public void add(int i){
 		list.add(i);
 	}
 
 	public void sort(){
-		int j, i;
-		for (j = 1; j < list.size(); j++) {
-			int key = list.get(j);
-			i = j-1;
-			while ( i >= 0 && list.get(i) > key) {
-				list.set(i+1, list.get(i));
-				i = i-1;
-			}			
-			list.set(i+1, key);
+		for (int i = 0; i < list.size(); i++) {
+			for (int j = list.size()-1; j > i; j--) {
+				if (list.get(j) < list.get(j-1)) {
+					int temp = list.get(j);
+					list.set(j, list.get(j-1));
+					list.set(j-1, temp);
+				}
+			}
 		}
-
 	}
 
 	public boolean verify(){
